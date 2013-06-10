@@ -25,7 +25,7 @@ static void add_snooze();
 //USER DEFINES
 static unsigned int REPEATS = 10;    // replay the chime
 static unsigned int SNOOZETIME = 5;  // snooze time
-static char *CHIME = "/home/pnewm/progs/c.files/snooze/chime.wav";
+static char *CHIME = "/home/pnewm/progs/c.files/snooze/crank.wav";
 static char *FONTNAME = "-*-dina-*-r-*";
 
 static unsigned int screen, width, height, running,text_width,text_width1;
@@ -105,7 +105,7 @@ void add_snooze() {
     XDrawString(dis, quitwin, theme[4].gc,
      (((width/3)*2)/2-(text_width/2)), (height/8)+font->ascent, text, strlen(text));
     XFlush(dis);
-    sleep(5);
+    sleep(10);
     running = 0;
 }
 
