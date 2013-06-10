@@ -24,8 +24,4 @@ Defines in the c files should be edited to suit.
 
 -CHIME path to the chime to play
 
-<<<<<<< HEAD:README.md
 -FONTNAME font to use
-=======
--FONTNAME font to use
->>>>>>> 7881b1cdd2710f2f8ec37452988cb93e693a66d3:Readme
