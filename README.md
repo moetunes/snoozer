@@ -4,7 +4,7 @@ SNOOZER
 
 An alarm with a snooze button.
 
-Usage: snoozer <hour> <minute>
+Usage: snoozer _hour_ _minute_
 
        snoozer 4 30
 
