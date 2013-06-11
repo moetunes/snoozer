@@ -16,7 +16,7 @@ Click the red button to kill the alarm
 
 Click the blue button to sleep a bit more
 
-Defines in the c files should be edited to suit.
+Defines in the config.h file should be edited to suit.
 
 -REPEATS number of times to chime
 
@@ -25,3 +25,5 @@ Defines in the c files should be edited to suit.
 -CHIME path to the chime to play
 
 -FONTNAME font to use
+
+Dependencies:- _xlib_ _alsa(for aplay)_
