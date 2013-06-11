@@ -22,18 +22,13 @@ static void chime();
 static void *waiting();
 static void add_snooze();
 
-//USER DEFINES
-static unsigned int REPEATS = 10;    // replay the chime
-static unsigned int SNOOZETIME = 5;  // snooze time in minutes
-static char *CHIME = "/home/pnewm/progs/c.files/snooze/crank.wav";
-static char *FONTNAME = "-*-dina-*-r-*";
-
 static unsigned int screen, width, height, running,text_width,text_width1;
 static int alarmhour, alarmminutes;
-static const char *themecolors[] = { "#992200", "#004466","#555555", "#009955", "#bbbbbb", };
 static Display *dis;
 static Window root, mainwin, snoozewin, quitwin;
 static 	XFontStruct *font;
+
+#include "config.h"
 
 static char text[20];
 
