@@ -163,7 +163,13 @@ int main(int argc, char ** argv){
 	text_width = XTextWidth(font, text, strlen(text));
 	text_width1 = XTextWidth(font, text1, strlen(text1));
 
-	XStoreName(dis, mainwin, "SNOOZER");
+    XStoreName(dis, mainwin, "SNOOZER");
+	XClassHint* classHint;
+    classHint = XAllocClassHint();
+    classHint->res_name = "SNOOZER";
+    classHint->res_class = "SNOOZER";
+    XSetClassHint(dis, mainwin, classHint);
+    XFree(classHint);
 	XSelectInput(dis, mainwin, ButtonPressMask|StructureNotifyMask|ExposureMask );
 	XMapWindow(dis, mainwin);
 	XMapSubwindows(dis, mainwin);
