@@ -76,6 +76,9 @@ void *waiting() {
             XDrawString(dis, quitwin, theme[4].gc,
    			 (((width/3)*2)/2-(text_width/2)), (height/8)+font->ascent, text, strlen(text));
             XFlush(dis);
+            if(vfork() == 0) {
+                execl("/usr/bin/xset", "xset", "dpms", "force", "on", NULL);
+            }
             chime();
         }
         sleep(15);
