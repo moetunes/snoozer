@@ -25,7 +25,7 @@ static void add_snooze();
 static unsigned int screen, width, height, running,text_width,text_width1;
 static int alarmhour, alarmminutes;
 static Display *dis;
-static Window root, mainwin, snoozewin, quitwin;
+static Window root, mainwin, snoozewin, quitwin, markwin;
 static 	XFontStruct *font;
 
 #include "config.h"
@@ -50,6 +50,7 @@ void chime() {
     int a_pipe[2];
     pipe(a_pipe);
     
+    XDestroyWindow(dis, markwin);
     for(i=0;i<REPEATS;++i) {
         if(running < 1) {
             if(vfork() == 0) {
@@ -75,6 +76,7 @@ void *waiting() {
             XClearWindow(dis, quitwin);
             XDrawString(dis, quitwin, theme[4].gc,
    			 (((width/3)*2)/2-(text_width/2)), (height/8)+font->ascent, text, strlen(text));
+            XMapWindow(dis, markwin);
             XFlush(dis);
             if(vfork() == 0) {
                 execl("/usr/bin/xset", "xset", "dpms", "force", "on", NULL);
@@ -176,6 +178,15 @@ int main(int argc, char ** argv){
 	XSelectInput(dis, mainwin, ButtonPressMask|StructureNotifyMask|ExposureMask );
 	XMapWindow(dis, mainwin);
 	XMapSubwindows(dis, mainwin);
+
+   	markwin = XCreateSimpleWindow(dis, root,width*3-20,height*3-20,
+      width,height,0,0,0);
+   	//XClassHint* classHint;
+    classHint = XAllocClassHint();
+    classHint->res_name = "SNOOZER-MARK";
+    classHint->res_class = "SNOOZER-MARK";
+    XSetClassHint(dis, markwin, classHint);
+    XFree(classHint);
 
 	while(1){
 		XNextEvent(dis, &ev);
