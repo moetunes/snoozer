@@ -50,7 +50,8 @@ void chime() {
     int a_pipe[2];
     pipe(a_pipe);
     
-    XDestroyWindow(dis, markwin);
+    XUnmapWindow(dis, markwin);
+    XFlush(dis);
     for(i=0;i<REPEATS;++i) {
         if(running < 1) {
             if(vfork() == 0) {

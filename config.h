@@ -1,6 +1,6 @@
 //USER DEFINES
 static unsigned int REPEATS = 10;    // replay the chime
-static unsigned int SNOOZETIME = 5;  // snooze time in minutes
+static unsigned int SNOOZETIME = 1;  // snooze time in minutes
 static char *CHIME = "/home/pnewm/progs/c.files/snooze/crank.wav";
 static char *FONTNAME = "-*-dina-*-r-*";
 /* Colours are for:
