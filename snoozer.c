@@ -51,7 +51,6 @@ void chime() {
     pipe(a_pipe);
     
     XUnmapWindow(dis, markwin);
-    XFlush(dis);
     for(i=0;i<REPEATS;++i) {
         if(running < 1) {
             if(vfork() == 0) {
